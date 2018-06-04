@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Siswa;
 use App\Kelas;
-use App\OrangTua;
 use Illuminate\Http\Request;
 use Alert;
 use DB;
@@ -22,7 +21,7 @@ class SiswaController extends Controller
         $orangtua = OrangTua::all();
         $kelas = Kelas::all();
         $siswa = Siswa::all();
-        return view ('siswa.index',compact('orangtua','siswa','kelas'));
+        return view ('siswa.index',compact('siswa','kelas'));
     }
 
     /**
@@ -45,7 +44,6 @@ class SiswaController extends Controller
     {
         $siswa = new Siswa;
         $siswa->id_kelas = $request->b;
-        $siswa->id_ortu = $request->f;
         $siswa->nama_siswa = $request->a;
         $siswa->nis = $request->c;
         $siswa->alamat = $request->d;
@@ -56,7 +54,6 @@ class SiswaController extends Controller
 
         $this->validate($request,[
             'id_kelas' => 'required',
-            'id_ortu' => 'required',
             'nis' => 'required',
             'alamat' => 'required',
             'no_hp' => 'required',
@@ -97,7 +94,6 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::findOrFail($id);
         $siswa->id_kelas = $request->b;
-        $siswa->id_ortu = $request->f;
         $siswa->nama_siswa = $request->a;
         $siswa->nis = $request->c;
         $siswa->alamat = $request->d;
@@ -108,7 +104,6 @@ class SiswaController extends Controller
 
         $this->validate($request,[
             'id_kelas' => 'required',
-            'id_ortu' => 'required',
             'nis' => 'required',
             'alamat' => 'required',
             'no_hp' => 'required',
