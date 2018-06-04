@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Absensi;
 use App\Siswa;
 use App\Kelas;
-use App\OrangTua;
 use Illuminate\Http\Request;
 use Alert;
 use DB;
@@ -21,7 +20,6 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $orangtua = OrangTua::all();
         $kelas = Kelas::all();
         $siswa = Siswa::all();
         $absensi = Absensi::all();
@@ -50,7 +48,6 @@ class AbsensiController extends Controller
         $absensi->id_siswa = $request->a;
         $absensi->id_kelas = $request->b;
         $siswa = Siswa::findOrFail($request->a);
-        $absensi->id_ortu = $siswa->id_ortu;
         $absensi->keterangan = $request->c;
         $absensi->tgl = $request->d;
         $absensi->save();
@@ -60,7 +57,6 @@ class AbsensiController extends Controller
         $this->validate($request,[
             'id_siswa' => 'required',
             'id_kelas' => 'required',
-            'id_ortu' => 'required',
             'keterangan' => 'required',
             'tgl' => 'required',
         ]);
@@ -102,7 +98,6 @@ class AbsensiController extends Controller
         $absensi->id_siswa = $request->a;
         $absensi->id_kelas = $request->b;
         $siswa = Siswa::findOrFail($request->a);
-        $absensi->id_ortu = $siswa->id_ortu;
         $absensi->keterangan = $request->c;
         $absensi->tgl = $request->d;
         $absensi->save();
@@ -112,7 +107,6 @@ class AbsensiController extends Controller
         $this->validate($request,[
             'id_siswa' => 'required',
             'id_kelas' => 'required',
-            'id_ortu' => 'required',
             'keterangan' => 'required',
             'tgl' => 'required',
         ]);
