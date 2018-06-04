@@ -10,12 +10,7 @@ class Siswa extends Model
     protected $fillable=['id_kelas','nama_siswa','nis','alamat','no_hp'];
     protected $visible=['id_kelas','nama_siswa','nis','alamat','no_hp'];
     public $timestamps=true;
-
-    public function orangtua()
-    {
-    	return $this->belongsTo('App\OrangTua','id_ortu');
-    }
-
+    
     public function kelas()
     {
     	return $this->belongsTo('App\kelas','id_kelas');
