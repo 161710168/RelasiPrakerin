@@ -17,7 +17,6 @@ class CreateAbsensisTable extends Migration
             $table->increments('id');
             $table->integer('id_siswa')->unsigned();
             $table->integer('id_kelas')->unsigned();
-            $table->integer('id_ortu')->unsigned();
             $table->string('keterangan');
             $table->date('tgl');
             $table->timestamps();
